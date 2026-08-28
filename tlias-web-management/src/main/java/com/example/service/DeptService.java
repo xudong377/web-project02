@@ -11,4 +11,6 @@ public interface DeptService {
      * @return
      */
     List<Dept> findAll();
+
+    void deleteById(Integer id);
 }

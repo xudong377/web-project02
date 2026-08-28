@@ -13,4 +13,10 @@ public interface DeptService {
     List<Dept> findAll();
 
     void deleteById(Integer id);
+
+    /**
+     * 新增部门
+     * @param dept
+     */
+    void add(Dept dept);
 }

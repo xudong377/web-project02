@@ -40,4 +40,16 @@ public class DeptController {
         deptService.deleteById(id);
         return Result.success();
     }
+
+    /**
+     * 新增部门
+     */
+    @PostMapping("/depts")
+    public Result add(@RequestBody Dept dept){
+        System.out.println("新增部门："+dept);
+        deptService.add(dept);
+        return Result.success();
+    }
+
+
 }

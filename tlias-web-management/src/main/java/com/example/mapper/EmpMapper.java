@@ -3,8 +3,8 @@ package com.example.mapper;
 import com.example.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -13,18 +13,15 @@ import java.util.List;
 @Mapper
 public interface EmpMapper {
 
-    //查询总记录数
-    @Select("select count(*) from emp")
-    public Long count();
-
     /**
-     * 分页查询
-     * @param start
-     * @param pageSize
-     * @return
+     * 条件查询员工列表（分页由 PageHelper 自动处理，无需手动传 start/pageSize）
+     * @param name   姓名（模糊）
+     * @param gender 性别
+     * @param begin  入职日期起
+     * @param end    入职日期止
      */
-
-    @Select("select e.*,d.name  deptName from emp e left join dept d on e.dept_id =d.id order by e.update_time desc limit #{start},#{pageSize} ")
-    public List<Emp> list(@Param("start") Integer start,@Param("pageSize") Integer pageSize);
-
+    List<Emp> list(@Param("name") String name,
+                   @Param("gender") Integer gender,
+                   @Param("begin") LocalDate begin,
+                   @Param("end") LocalDate end);
 }

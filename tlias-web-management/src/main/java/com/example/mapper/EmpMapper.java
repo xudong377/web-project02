@@ -1,10 +1,11 @@
 package com.example.mapper;
 
 import com.example.pojo.Emp;
+import com.example.pojo.EmpQueryParam;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Options;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -15,13 +16,15 @@ public interface EmpMapper {
 
     /**
      * 条件查询员工列表（分页由 PageHelper 自动处理，无需手动传 start/pageSize）
-     * @param name   姓名（模糊）
-     * @param gender 性别
-     * @param begin  入职日期起
-     * @param end    入职日期止
+     * @param empQueryParam 查询条件（name/gender/begin/end）
      */
-    List<Emp> list(@Param("name") String name,
-                   @Param("gender") Integer gender,
-                   @Param("begin") LocalDate begin,
-                   @Param("end") LocalDate end);
+    List<Emp> list(EmpQueryParam empQueryParam);
+
+    /**
+     * 新增员工基本信息
+     * @param emp
+     */
+    @Options(useGeneratedKeys = true,keyProperty = "id")
+    @Insert("insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time) VALUES (#{username},#{name},#{gender},#{phone},#{job},#{salary},#{image},#{entryDate},#{deptId},#{createTime},#{updateTime})")
+    void insert(Emp emp);
 }

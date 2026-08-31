@@ -4,6 +4,8 @@ import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
 import com.example.pojo.PageResult;
 
+import java.util.List;
+
 public interface EmpService {
 
     /**
@@ -17,4 +19,10 @@ public interface EmpService {
     PageResult<Emp> page(EmpQueryParam empQueryParam);
 
     void save(Emp emp);
+
+    /**
+     * 批量删除员工信息
+     * @param ids
+     */
+    void delete(List<Integer> ids);
 }

@@ -11,22 +11,11 @@
               <option name="cwd" value="C:\后端学习\web-project02" />
               <option name="model" value="claude-sonnet-5[1m]" />
               <option name="permissionMode" value="default" />
-            </TabSessionState>
-          </value>
-        </entry>
-        <entry key="1">
-          <value>
-            <TabSessionState>
-              <option name="provider" value="claude" />
-              <option name="sessionId" value="082f1e1e-ec7c-4633-8661-15685059b996" />
-              <option name="cwd" value="C:\后端学习\web-project02" />
-              <option name="model" value="claude-sonnet-5[1m]" />
-              <option name="permissionMode" value="default" />
+              <option name="reasoningEffort" value="medium" />
             </TabSessionState>
           </value>
         </entry>
       </map>
     </option>
-    <option name="tabCount" value="2" />
   </component>
 </project>

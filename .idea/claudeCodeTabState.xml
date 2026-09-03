@@ -11,7 +11,7 @@
               <option name="cwd" value="C:\后端学习\web-project02" />
               <option name="model" value="claude-sonnet-5[1m]" />
               <option name="permissionMode" value="default" />
-              <option name="reasoningEffort" value="medium" />
+              <option name="reasoningEffort" value="low" />
             </TabSessionState>
           </value>
         </entry>

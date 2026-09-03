@@ -90,8 +90,8 @@ public class EmpServiceImpl implements EmpService {
         if(!CollectionUtils.isEmpty(exprList)){
             exprList.forEach(expr->{
                 expr.setEmpId(emp.getId());
-                empExprMapper.insertBatch(exprList);
             });
+            empExprMapper.insertBatch(exprList);
         }
     }
 }

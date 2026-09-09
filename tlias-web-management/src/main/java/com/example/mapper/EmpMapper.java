@@ -2,10 +2,7 @@ package com.example.mapper;
 
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -48,4 +45,12 @@ public interface EmpMapper {
      * @param emp
      */
     void updateById(Emp emp);
+
+    /**
+     * 根据用户名和密码查询员工信息
+     * @param emp
+     * @return
+     */
+    @Select("select id,emp.username,emp.name from emp where username=#{username} and password =#{password}")
+    Emp selectByUsernameAndPassword(Emp emp);
 }

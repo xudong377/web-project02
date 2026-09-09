@@ -2,13 +2,12 @@ package com.example.service.impl;
 
 import com.example.mapper.EmpExprMapper;
 import com.example.mapper.EmpMapper;
-import com.example.pojo.Emp;
-import com.example.pojo.EmpExpr;
-import com.example.pojo.EmpQueryParam;
-import com.example.pojo.PageResult;
+import com.example.pojo.*;
 import com.example.service.EmpService;
+import com.example.util.JwtUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,10 +15,35 @@ import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@Slf4j
 @Service
 public class EmpServiceImpl implements EmpService {
+
+    @Override
+    public Logininfo login(Emp emp) {
+        //1.调用Mapper接口，根据用户名和密码查询员工信息
+        Emp e=empMapper.selectByUsernameAndPassword(emp);
+        //2.判断该员工是否存在，存在，组装登录成功信息
+        if(e!=null){
+            log.info("登录成功，员工信息:{}",emp);
+            //生成JWT令牌
+            Map<String,Object> claims=new HashMap<>();
+            claims.put("id",e.getId());
+            claims.put("username",e.getUsername());
+            String token = JwtUtils.generateJwt(claims);
+
+            return new Logininfo(e.getId(),e.getUsername(),e.getName(),token);
+        }
+        //3.不存在，返回null
+        return null;
+
+
+
+    }
 
     @Autowired
     private EmpMapper empMapper;

@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
+import com.example.pojo.Logininfo;
 import com.example.pojo.PageResult;
 
 import java.util.List;
@@ -38,4 +39,11 @@ public interface EmpService {
      * @param emp
      */
     void update(Emp emp);
+
+    /**
+     * 员工登录
+     * @param emp
+     * @return
+     */
+    Logininfo login(Emp emp);
 }
